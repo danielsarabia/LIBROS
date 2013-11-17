@@ -33,7 +33,14 @@
          <td><?php echo $libro['paginas']?></td>
 
      </tr>
+     
  </table>
+ 
+  <?php foreach ($params2['autor'] as $dato) :?>
+<div class="thumbnail">
+<p><?php echo $dato['nombre'] ?></a><br /><p><?php echo $dato['apellido_paterno'] ?></p>
+</div>
+<?php endforeach; ?>
 
 
  <?php $contenido = ob_get_clean() ?>

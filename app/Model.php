@@ -86,6 +86,25 @@
          return $libros;}
      }
 	 
+	 public function dameAutor($id)
+     {
+     	$id = htmlspecialchars($id);
+		$sql = "SELECT id_autor FROM libro_autor where id_libro=".$id;
+		$result = mysql_query($sql, $this->conexion) or die(mysql_error());
+		$id_libros=array();
+		while ($row = mysql_fetch_assoc($result))
+         {
+             $id_libros[] = $row;
+         }
+         $autor=array();
+         foreach ($id_libros as $dato) {
+             $id = htmlspecialchars($dato['id_autor']);
+			 $sql = "SELECT * FROM autor where id=".$id;
+			 $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+			 $autor[]=$row;
+         }
+		 return $autor;
+	 }
 	 public function dameLibro($id)
      {
          $id = htmlspecialchars($id);
@@ -100,6 +119,9 @@
          return $row;
 
      }
+	 
+	
+	 
 	 public function validarRegistro($usuario, $nombre, $apellido_paterno, $apellido_materno, $contrasena, $calle, $numero, $ciudad, $telefono, $edad, $foto, $email){
 		 $sql = "select usuario from cliente where usuario = '" . $usuario . "'";
 		 $result = mysql_query($sql, $this->conexion) or die(mysql_error());
