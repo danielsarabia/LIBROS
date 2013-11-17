@@ -24,6 +24,17 @@
      {
 
      }
+	 public function obtenerDatos(){
+		 $sql = "select * from libro";
+		 $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+		 $datos = array();
+         while ($row = mysql_fetch_assoc($result))
+         {
+             $datos[] = $row;
+         }
+
+         return $datos;
+	 }
 	 
 	 public function validarUsuario($nombre, $contrasena){
 		 $sql = "select usuario from cliente where usuario = '" . $nombre . "'";

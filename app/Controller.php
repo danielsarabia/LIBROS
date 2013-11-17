@@ -12,6 +12,14 @@
 
      public function inicio()
      {
+		 $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+         $params = array(
+             'datos' => $m->obtenerDatos(),
+         );
+		 /*foreach($params['datos'] as $dato){
+		 echo $dato['titulo'];
+		 }*/
          require __DIR__ . '/templates/inicio.php';
      }
 	 
@@ -43,6 +51,11 @@
 			if($result != 0 ){
 		     session_start();
 			 $_SESSION['autentica']= "SIP";
+			 $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+         $params = array(
+             'datos' => $m->obtenerDatos(),
+         );
 			 $_SESSION['usuarioactual']= $usuario;
 			 require __DIR__ . '/templates/inicio.php';
 		 }
@@ -72,6 +85,13 @@
 		     session_start();
 			 $_SESSION['autentica']= "SIP";
 			 $_SESSION['usuarioactual']= $_POST['usuario'];
+			 $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+         $params = array(
+             'datos' => $m->obtenerDatos(),
+         );
+			 
+			 
 			 require __DIR__ . '/templates/inicio.php';
 		 }
 		 else{
