@@ -101,6 +101,7 @@
              $id = htmlspecialchars($dato['id_autor']);
 			 $sql = "SELECT * FROM autor where id=".$id;
 			 $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+			 $row = mysql_fetch_assoc($result);
 			 $autor[]=$row;
          }
 		 return $autor;
