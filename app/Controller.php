@@ -78,4 +78,35 @@
 			 echo "<script>alert('ERROR');window.location.href='index.php?ctl=login'</script>”";
 		 }
      }
+	 
+	  public function listar()
+     {
+         $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+
+         $params = array(
+             'libros' => $m->dameLibros(),
+         );
+
+         require __DIR__ . '/templates/mostrarLibros.php';
+     }
+	 
+	 public function ver()
+     {
+         if (!isset($_GET['id'])) {
+             throw new Exception('Página no encontrada');
+         }
+
+         $id = $_GET['id'];
+
+         $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+
+         $libro = $m->dameLibro($id);
+
+         $params = $libro;
+
+         require __DIR__ . '/templates/verLibro.php';
+     }
+
  }

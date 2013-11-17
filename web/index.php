@@ -13,7 +13,9 @@
 	 'registrar' => array('controller' =>'Controller', 'action' =>'registrar'),
 	 'login' => array('controller' =>'Controller', 'action' =>'login'),
 	 'logear' => array('controller' =>'Controller', 'action' =>'logear'),
-	 'salir' => array('controller' =>'Controller', 'action' =>'salir')
+	 'salir' => array('controller' =>'Controller', 'action' =>'salir'),
+	 'listar' => array('controller' =>'Controller', 'action' =>'listar'),
+	 'ver' => array('controller' =>'Controller', 'action' =>'ver')
  );
 
  // Parseo de la ruta

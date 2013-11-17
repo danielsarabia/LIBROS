@@ -44,6 +44,35 @@
 		 } else return 0;
 	 }
 	 
+	  public function dameLibros()
+     {
+         $sql = "SELECT * FROM libro ORDER BY id DESC";
+
+         $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+
+         $libros = array();
+         while ($row = mysql_fetch_assoc($result))
+         {
+             $libros[] = $row;
+         }
+
+         return $libros;
+     }
+	 
+	 public function dameLibro($id)
+     {
+         $id = htmlspecialchars($id);
+
+         $sql = "select * from libro where id=".$id;
+
+         $result = mysql_query($sql, $this->conexion);
+
+         $libros = array();
+         $row = mysql_fetch_assoc($result);
+
+         return $row;
+
+     }
 	 public function validarRegistro($usuario, $nombre, $apellido_paterno, $apellido_materno, $contrasena, $calle, $numero, $ciudad, $telefono, $edad, $foto, $email){
 		 $sql = "select usuario from cliente where usuario = '" . $usuario . "'";
 		 $result = mysql_query($sql, $this->conexion) or die(mysql_error());

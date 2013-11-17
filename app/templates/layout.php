@@ -54,6 +54,11 @@
             <li> <a>Historial de Compras</a> </li>
             <li> <a>Carrito Actual</a> </li>
             </ul>
+            
+            <ul>
+            <p>Acciones</p>
+            <li> <a href="index.php?ctl=listar">Ver libros</a> </li>
+            </ul>
         </div>
         <div id="contenido">
         <?php echo $contenido ?>
