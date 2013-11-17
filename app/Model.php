@@ -55,9 +55,10 @@
 		 } else return 0;
 	 }
 	 
-	  public function dameLibros()
+	  public function dameLibros($id)
      {
-         $sql = "SELECT * FROM libro ORDER BY id DESC";
+     	if($id==0){
+     		$sql = "SELECT * FROM libro ORDER BY id DESC";
 
          $result = mysql_query($sql, $this->conexion) or die(mysql_error());
 
@@ -68,6 +69,21 @@
          }
 
          return $libros;
+     	}
+		else{
+     	$id = htmlspecialchars($id);
+		
+         $sql = "SELECT * FROM libro where id_categoria=".$id;
+
+         $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+
+         $libros = array();
+         while ($row = mysql_fetch_assoc($result))
+         {
+             $libros[] = $row;
+         }
+
+         return $libros;}
      }
 	 
 	 public function dameLibro($id)

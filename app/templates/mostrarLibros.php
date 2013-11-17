@@ -1,17 +1,10 @@
 <?php ob_start() ?>
-
- <table>
-     <tr>
-         <th>Titulo</th>
-     </tr>
-     <?php foreach ($params['libros'] as $libro) :?>
-     <tr>
-         <td><a href="index.php?ctl=ver&id=<?php echo $libro['id']?>">
-                 <?php echo $libro['titulo'] ?></a></td>
-     </tr>
-     <?php endforeach; ?>
-
- </table>
+<?php foreach ($params['libros'] as $dato) :?>
+<div class="thumbnail">
+<img src="img/<?php echo $dato['foto'] ?>" width="100" style="float:left;"> <p href="index.php?ctl=ver&id=<?php echo $dato['id']?>"><?php echo $dato['titulo'] ?></p><br /><p>$<?php echo $dato['precio'] ?></p>
+</div>
+<?php endforeach; ?>
+ 
 
 
  <?php $contenido = ob_get_clean() ?>

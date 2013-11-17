@@ -40,12 +40,12 @@
         <div id="barra">
         	<ul> 
             <p>CATEGORÍAS</p>
-            <li> <a>Novela</a> </li>
-            <li> <a>Infantil</a> </li>
-            <li> <a>Técnico</a> </li>
-            <li> <a>Histórico</a> </li>
-            <li> <a>Juvenil</a> </li>
-            <li> <a>Todos</a> </li>
+            <li> <a href="index.php?ctl=listar&id=1">Novela</a> </li>
+            <li> <ahref="index.php?ctl=listar&id=2">Infantil</a> </li>
+            <li> <a href="index.php?ctl=listar&id=3">Técnico</a> </li>
+            <li> <ahref="index.php?ctl=listar&id=4">Histórico</a> </li>
+            <li> <a href="index.php?ctl=listar&id=5">Juvenil</a> </li>
+            <li> <a href="index.php?ctl=listar&id=0">Todos</a> </li>
             </ul>
             
             <ul>
@@ -55,10 +55,7 @@
             <li> <a>Carrito Actual</a> </li>
             </ul>
             
-            <ul>
-            <p>Acciones</p>
-            <li> <a href="index.php?ctl=listar">Ver libros</a> </li>
-            </ul>
+      
         </div>
         <div id="contenido">
         <?php echo $contenido ?>

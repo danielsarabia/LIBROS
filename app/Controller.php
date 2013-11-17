@@ -101,11 +101,17 @@
 	 
 	  public function listar()
      {
+     	if (!isset($_GET['id'])) {
+             throw new Exception('Página no encontrada');
+         }
+		
+		$id = $_GET['id'];
+		
          $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
                      Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
 
          $params = array(
-             'libros' => $m->dameLibros(),
+             'libros' => $m->dameLibros($id),
          );
 
          require __DIR__ . '/templates/mostrarLibros.php';
