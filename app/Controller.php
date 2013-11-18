@@ -113,10 +113,28 @@
          $params = array(
              'libros' => $m->dameLibros($id),
          );
+		 $categoria = $m->dameCategoria($id);
 
+         $params2 = $categoria;
          require __DIR__ . '/templates/mostrarLibros.php';
      }
-	 
+	 public function buscarPorNombre()
+     {
+         $params = array(
+             'titulo' => '',
+             'resultado' => array(),
+         );
+
+         $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+
+         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+             $params['titulo'] = $_POST['titulo'];
+             $params['resultado'] = $m->buscarAlimentosPorNombre($_POST['titulo']);
+         }
+
+         require __DIR__ . '/templates/buscarPorNombre.php';
+     }
 	 public function ver()
      {
          if (!isset($_GET['id'])) {

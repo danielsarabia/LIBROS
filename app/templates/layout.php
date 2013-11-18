@@ -1,3 +1,4 @@
+<?php ob_start() ?>
 <?php
     //Reanudamos la sesión
     @session_start();
@@ -23,6 +24,7 @@
          <link rel="stylesheet" type="text/css" media="screen" href="js/css/jquery.ketchup.css" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery.ketchup.all.min.js"></script>
+<script src="funcion.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -31,9 +33,9 @@
     <div class="linkslinks"><?php echo $_SESSION['usuarioactual'] ?></div>
     <div class="linkslinks"><a href="index.php?ctl=salir">SALIR</a></div>
     <img src="img/logobuhardillaROJOPEQ.png"  style="float:left;"/>
-     <form name="formbusqueda">
-     <input type="text"  class="textoBusqueda" name="busqueda" />
-     <input type="submit" name="buscar" class="botonBuscar" value="" />
+     <form name="formBusqueda" action="index.php?ctl=buscar" method="POST">
+     <input type="text" class="textoBusqueda" name="titulo" value="">
+    <input type="submit" name="buscar" class="botonBuscar" value="" onClick=" window.location.href='index.php?ctl=buscar' " />
      </form>
     </div>
     <div id="area">

@@ -15,6 +15,7 @@
 	 'logear' => array('controller' =>'Controller', 'action' =>'logear'),
 	 'salir' => array('controller' =>'Controller', 'action' =>'salir'),
 	 'listar' => array('controller' =>'Controller', 'action' =>'listar'),
+	 'buscar' => array('controller' =>'Controller', 'action' =>'buscarPorNombre'),
 	 'ver' => array('controller' =>'Controller', 'action' =>'ver')
  );
 

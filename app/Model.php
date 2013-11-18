@@ -54,10 +54,40 @@
 		 } else return 2;
 		 } else return 0;
 	 }
-	 
+	 public function dameCategoria($id)
+     {
+     	$id = htmlspecialchars($id);
+
+         $sql = "select * from categoria where id=".$id;
+
+         $result = mysql_query($sql, $this->conexion);
+
+         
+         $row = mysql_fetch_assoc($result);
+
+         return $row;
+
+     }
+	  public function buscarAlimentosPorNombre($titulo)
+     {
+         $titulo = htmlspecialchars($titulo);
+
+         $sql = "select * from libro where titulo like '" . $titulo . "' order by titulo desc";
+
+         $result = mysql_query($sql, $this->conexion);
+
+         $libros = array();
+         while ($row = mysql_fetch_assoc($result))
+         {
+             $libros[] = $row;
+         }
+
+         return $libros;
+     }
 	  public function dameLibros($id)
      {
      	if($id==0){
+     		$id = htmlspecialchars($id);
      		$sql = "SELECT * FROM libro ORDER BY id DESC";
 
          $result = mysql_query($sql, $this->conexion) or die(mysql_error());
