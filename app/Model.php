@@ -85,7 +85,18 @@
 
          return $libros;}
      }
-	 
+	 public function dameEditorial($id)
+     {
+     	$id = htmlspecialchars($id);
+		$sql = "SELECT id_editorial FROM libro where id=".$id;
+		$result = mysql_query($sql, $this->conexion);
+         $row = mysql_fetch_assoc($result);
+		$id = htmlspecialchars($row['id_editorial']);
+		$sql = "SELECT * FROM editorial where id=".$id;
+		$result = mysql_query($sql, $this->conexion);
+		$row = mysql_fetch_assoc($result);
+         return $row;
+     }
 	 public function dameAutor($id)
      {
      	$id = htmlspecialchars($id);
@@ -114,7 +125,7 @@
 
          $result = mysql_query($sql, $this->conexion);
 
-         $libros = array();
+         
          $row = mysql_fetch_assoc($result);
 
          return $row;

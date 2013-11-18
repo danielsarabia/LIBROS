@@ -93,7 +93,37 @@ background-repeat:repeat;
 	font-size:15px;
 	color:#FF0000;
 }
-
+#field{
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	text-align:left;
+	border-style:dotted;
+	font-family:'OpenSans-Regular', sans-serif;
+	font-size:20px;
+	border-color:#FF0000; 
+	
+}
+p3{
+	color:#959090;
+}
+#imag_libro{
+	
+	
+	width:300px;
+	float:left;
+	margin-bottom:10px;
+}
+#tabla_ver{
+	float:left;
+	padding:3px;
+	font-family:'OpenSans-Regular', sans-serif;
+	font-size:20px;
+	
+}
+#spin{
+	float: left;
+}
 #area{
 	width:1024px;
 	height:800px;

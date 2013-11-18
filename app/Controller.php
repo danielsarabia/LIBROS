@@ -134,8 +134,9 @@
          $libro = $m->dameLibro($id);
 
          $params = $libro;
-
-         require __DIR__ . '/templates/verLibro.php';
+		$editorial=$m->dameEditorial($id);
+		$params3=$editorial;
+        require __DIR__ . '/templates/verLibro.php';
      }
 
  }
