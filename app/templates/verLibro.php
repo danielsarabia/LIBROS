@@ -36,13 +36,14 @@
          <td colspan="2" width="200" height="50"><p3>Precio: </p3><b><i><u>$<?php echo $libro['precio']?></u></i></b></td>
      </tr>     
  </table>
- <form id="spin">
+ <form id="spin" method="post" action="index.php?ctl=anadir">
         <label for="cantidad">
             <p3>Cantidad de ejemplares</p3>
             <input type="number" name="ejemplares" id="ejemplares"
                 min="1" max="20" step="1" value="1">
+                <input type="hidden" name="id" value="<?php echo $id ?>">
         </label>
-        <input type="button" value="Añadir al carrito" >
+        <input type="submit" value="Añadir al carrito" >
     </form>
  
  </fieldset>

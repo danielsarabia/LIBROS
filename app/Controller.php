@@ -156,5 +156,39 @@
 		$params3=$editorial;
         require __DIR__ . '/templates/verLibro.php';
      }
+	 
+	 public function anadir(){
+		 if (!isset($_POST['id'])) {
+             throw new Exception('Página no encontrada');
+         }
+
+         $id = $_POST['id'];
+		 @session_start();
+		 $cantidad = $_POST['ejemplares'];
+		 $usuario = $_SESSION['usuarioactual'];
+		 $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+					 
+		$resultado = $m->anadirAlCarrito($usuario, $id, $cantidad);
+		echo "<script>alert('ANADIDO AL CARRITO');</script>";
+		$params2 = array(
+             'autor' => $m->dameAutor($id),
+         );
+         $libro = $m->dameLibro($id);
+
+         $params = $libro;
+		$editorial=$m->dameEditorial($id);
+		$params3=$editorial;
+        require __DIR__ . '/templates/verLibro.php';
+	 }
+	 
+	 public function verCarrito(){
+		 @session_start();
+		 $usuario = $_SESSION['usuarioactual'];
+		 $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+		$result = $m->dameCarrito($usuario);
+		require __DIR__ . '/templates/verCarrito.php';
+	 }
 
  }

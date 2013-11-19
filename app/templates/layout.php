@@ -43,9 +43,9 @@
         	<ul> 
             <p>CATEGORÍAS</p>
             <li> <a href="index.php?ctl=listar&id=1">Novela</a> </li>
-            <li> <ahref="index.php?ctl=listar&id=2">Infantil</a> </li>
+            <li> <a href="index.php?ctl=listar&id=2">Infantil</a> </li>
             <li> <a href="index.php?ctl=listar&id=3">Técnico</a> </li>
-            <li> <ahref="index.php?ctl=listar&id=4">Histórico</a> </li>
+            <li> <a href="index.php?ctl=listar&id=4">Histórico</a> </li>
             <li> <a href="index.php?ctl=listar&id=5">Juvenil</a> </li>
             <li> <a href="index.php?ctl=listar&id=0">Todos</a> </li>
             </ul>
@@ -54,7 +54,7 @@
             <p>PERFIL</p>
             <li> <a>Configuración</a> </li>
             <li> <a>Historial de Compras</a> </li>
-            <li> <a>Carrito Actual</a> </li>
+            <li> <a href="index.php?ctl=verCarrito">Carrito Actual</a> </li>
             </ul>
             
       

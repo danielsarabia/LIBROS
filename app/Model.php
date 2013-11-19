@@ -178,6 +178,72 @@
 			 return $result2;
 		 }
 	 }
+	 
+	 public function anadirAlCarrito($usuario, $id, $cantidad){
+		 $sql = "select id from carrito where id_cliente = '" . $usuario . "' and estado = 1";
+		 $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+		 $existe = mysql_num_rows($result);
+		  if($existe>0){ /////////FALTA VALIDACION SI SE REPITE EL LIBRO
+			  $datos = array();
+				 while ($row = mysql_fetch_assoc($result))
+				 {
+					 $datos[] = $row;
+				 }
+			  $sql = "insert into carrito_libro (id_carrito, id_libro, cantidad) values('".$datos[0]['id']."', '$id', $cantidad)";
+			  $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+			  
+		  }else{
+			   $sql = "insert into carrito (id_cliente, fecha, estado) values('$usuario', NOW(), 1)";
+			   $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+			   echo $result;
+			   $datos = array();
+				 while ($row = mysql_fetch_assoc($result))
+				 {
+					 $datos[] = $row;
+				 }
+			   $sql = "insert into carrito_libro (id_carrito, id_libro, cantidad) values('".$datos[0]['id']."', '$id', $cantidad)";
+			   $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+			  
+		  }
+		 
+	 }
+	 
+	 public function dameCarrito($usuario){
+		 $sql = "select id from carrito where id_cliente = '" . $usuario . "' and estado = 1";
+		 $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+		 $existe = mysql_num_rows($result);
+		  if($existe>0){ 
+			  		$datos = array();
+					 while ($row = mysql_fetch_assoc($result))
+					 {
+						 $datos[] = $row;
+					 }
+			  $sql = "select * from carrito_libro where id_carrito='".$datos[0]['id']."'";
+			  $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+			  $datos = array();
+				 while ($row = mysql_fetch_assoc($result))
+				 {
+					 $datos[] = $row;
+				 }
+			  foreach($datos as $dato){
+				  $result = mysql_query("select * from libro where id='".$dato['id_libro']."'", $this->conexion) or die(mysql_error());
+				  while ($row = mysql_fetch_assoc($result))
+				 {
+					 $datosss[] = $row;
+					 $datos2[] = array(
+				  'titulo' => $row['titulo'],
+				  'cantidad'=> $dato['cantidad'],
+				  'precio'=> $row['precio'],
+				  'total'=> $dato['cantidad'] * $row['precio'],
+				  );
+				 }
+				  
+				 
+			  }
+			   return $datos2;
+			  
+		  }
+	 }
 
 
  }
