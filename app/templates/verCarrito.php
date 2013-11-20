@@ -4,9 +4,9 @@
  	 <?php foreach ($result as $dato) :?>
 		<tr>
         <td><?php echo $dato['titulo']?></td>
-        <td><?php echo $dato['precio']?></td>
+        <td>$<?php echo $dato['precio']?></td>
         <td><?php echo $dato['cantidad']?></td>
-        <td><?php echo $dato['total']?></td>
+        <td>$<?php echo $dato['total']?></td>
         </tr>
 		
 
