@@ -183,16 +183,28 @@
 		 $sql = "select id from carrito where id_cliente = '" . $usuario . "' and estado = 1";
 		 $result = mysql_query($sql, $this->conexion) or die(mysql_error());
 		 $existe = mysql_num_rows($result);
-		  if($existe>0){ /////////FALTA VALIDACION SI SE REPITE EL LIBRO
+		  if($existe>0){ ///////// SI YA EXISTE UN CARRITO ASOCIADO AL CLIENTE
 			  $datos = array();
 				 while ($row = mysql_fetch_assoc($result))
 				 {
 					 $datos[] = $row;
 				 }
+			 $result2 = mysql_query("select * from carrito_libro where id_carrito = '".$datos[0]['id']."' and id_libro='$id'", $this->conexion) or die(mysql_error());
+			 $existe2 = mysql_num_rows($result2);
+			 if($existe2>0){ ///////// SI EN ESE CARRITO YA SE AGREGO ESE LIBRO SE INCREMENTA CANTIDAD
+				 $datos2 = array();
+				 while ($row = mysql_fetch_assoc($result2))
+				 {
+					 $datos2[] = $row;
+				 }
+				 $result3 = mysql_query("update carrito_libro set cantidad ='".($datos2[0]['cantidad']+$cantidad)."' where id_carrito = '".$datos[0]['id']."' and id_libro='$id'", $this->conexion) or die(mysql_error());
+			 }else{ ///////// SI AUN NO SE HA AGREGADO ESE LIBRO SE AGREGA
 			  $sql = "insert into carrito_libro (id_carrito, id_libro, cantidad) values('".$datos[0]['id']."', '$id', $cantidad)";
 			  $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+			 }
+		  //////////////////////
 			  
-		  }else{
+		  }else{ ///////// SI NO EXISTE UN CARRITO ASOCIADO AL CLIENTE SE AGREGA
 			   $sql = "insert into carrito (id_cliente, fecha, estado) values('$usuario', NOW(), 1)";
 			   $result = mysql_query($sql, $this->conexion) or die(mysql_error());
 			   echo $result;
@@ -200,7 +212,7 @@
 				 while ($row = mysql_fetch_assoc($result))
 				 {
 					 $datos[] = $row;
-				 }
+				 } ///////// SE AGREGA AL CARRITO EL LIBRO
 			   $sql = "insert into carrito_libro (id_carrito, id_libro, cantidad) values('".$datos[0]['id']."', '$id', $cantidad)";
 			   $result = mysql_query($sql, $this->conexion) or die(mysql_error());
 			  
@@ -218,7 +230,8 @@
 					 {
 						 $datos[] = $row;
 					 }
-			  $sql = "select * from carrito_libro where id_carrito='".$datos[0]['id']."'";
+					 $idcarrito = $datos[0]['id'];
+			  $sql = "select * from carrito_libro where id_carrito='".$idcarrito."'";
 			  $result = mysql_query($sql, $this->conexion) or die(mysql_error());
 			  $datos = array();
 				 while ($row = mysql_fetch_assoc($result))
@@ -231,6 +244,8 @@
 				 {
 					 $datosss[] = $row;
 					 $datos2[] = array(
+				  'id_carrito'=> $idcarrito,
+				  'id_libro'=> $row['id'],
 				  'titulo' => $row['titulo'],
 				  'cantidad'=> $dato['cantidad'],
 				  'precio'=> $row['precio'],
@@ -243,6 +258,12 @@
 			   return $datos2;
 			  
 		  }
+	 }
+	 
+	 public function eliminarDelCarrito($id_carrito, $id_libro){
+		  $sql = "delete from carrito_libro where id_carrito = '$id_carrito' and id_libro = '$id_libro'";
+		  $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+		 
 	 }
 
 

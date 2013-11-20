@@ -18,7 +18,8 @@
 	 'buscar' => array('controller' =>'Controller', 'action' =>'buscarPorNombre'),
 	 'ver' => array('controller' =>'Controller', 'action' =>'ver'),
 	 'anadir' => array('controller' =>'Controller', 'action' =>'anadir'),
-	 'verCarrito' => array('controller' =>'Controller', 'action' =>'verCarrito')
+	 'verCarrito' => array('controller' =>'Controller', 'action' =>'verCarrito'),
+	 'eliminar' => array('controller' =>'Controller', 'action' =>'eliminar')
  );
 
  // Parseo de la ruta

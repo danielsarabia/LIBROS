@@ -30,7 +30,7 @@ src: url(../fonts/OpenSans-Bold.ttf) format("truetype"), url(../fonts/OpenSans-B
 
 * {margin:0; padding: 0;}
 
-a{text-decoration:none;}
+a{text-decoration:none; color:#FF0000;}
 
 html{
 width:100%;
@@ -334,6 +334,15 @@ select{
 	height:32px;
 }
 
+.botonEliminar{
+	float:left;
+	background-image:url(../img/stop32.png);
+	background-color:transparent;
+	border: none;
+	width:29px;
+	height:29px;
+}
+
 .botonSubmit{
 	margin-top:15px;
 	background-color:#FF0000;
@@ -395,4 +404,60 @@ select{
 	width: 350px;
 	margin-left:auto;
 	margin-right:auto;
+}
+
+#carrito
+{
+	color:#FF0000;
+	font-size:15px;
+border-collapse:collapse;
+margin-left:auto;
+margin-right:auto;
+}
+#carrito th, #carrito td
+{
+border: 2px solid #FF0000;
+}
+
+#carrito .nada{
+	border:none;
+	background-color:#FFFFFF;
+}
+
+#carrito .nada2{
+	border:none;
+	background-color:#FFFFFF;
+	width:30px;
+}
+
+#carrito th{
+font-family:"OpenSans-SemiBold", sans-serif;
+	color:#FFFFFF;
+	font-size:20px;
+	background-color:#FF0000;
+	height:25px;
+	vertical-align:central;
+	text-align:center;
+	min-width:100px;
+	
+}
+
+#carrito .total{
+	font-family:"OpenSans-SemiBold", sans-serif;
+	color:#FFFFFF;
+	font-size:15px;
+	background-color:#FF0000;
+	height:25px;
+	vertical-align:central;
+	text-align:center;
+}
+
+#carrito td{
+font-family:"OpenSans-Light", sans-serif;
+	color:#FF0000;
+	background-color:#FFFFFF;
+	height:50px;
+	vertical-align:central;
+	text-align:center;
+	min-width:100px;
 }
