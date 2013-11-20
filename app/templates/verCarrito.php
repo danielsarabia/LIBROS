@@ -7,6 +7,7 @@
  <th>CANTIDAD</th>
  <th>TOTAL</th>
  <th class="nada"></th>
+ <?php if ($result !=0) :?>
  	 <?php foreach ($result as $dato) :?>
 		<tr>
         <td><?php echo $dato['titulo']?></td>
@@ -27,8 +28,9 @@
 <input type="submit" value="Comprar" class="botonSubmit">
 </form></td>
 </tr>
-
+<?php endif; ?>
 </table>
+
  <?php $contenido = ob_get_clean() ?>
 
  <?php include 'layout.php' ?>
