@@ -31,6 +31,11 @@ src: url(../fonts/OpenSans-Bold.ttf) format("truetype"), url(../fonts/OpenSans-B
 * {margin:0; padding: 0;}
 
 a{text-decoration:none; color:#FF0000;}
+a:hover{
+background-image:url(../img/fondorayas2.png);
+	background-repeat:repeat;
+	cursor:pointer;
+}
 
 html{
 width:100%;
@@ -155,7 +160,7 @@ p3{
 
 .linkslinks{
 	
-	width:100px;
+	width:80px;
 	margin-left:10px;
 	margin-right:10px;
 	margin-top:30px;
@@ -310,7 +315,7 @@ select{
 	background-color:#FFFFFF;
 	border: 1px solid #FF0000;
 	width:350px;
-	height:30px;
+	height:32px;
 }
 
 .textoLogin{
@@ -333,6 +338,9 @@ select{
 	width:32px;
 	height:32px;
 }
+.botonBuscar:hover{
+	cursor:pointer;
+}
 
 .botonEliminar{
 	float:left;
@@ -342,7 +350,20 @@ select{
 	width:29px;
 	height:29px;
 }
-
+.botonEliminar:hover{
+	cursor:pointer;
+}
+.botonMas:hover{
+	cursor:pointer;
+}
+.botonMas{
+	float:left;
+	background-image:url(../img/plus32.png);
+	background-color:transparent;
+	border: none;
+	width:32px;
+	height:32px;
+}
 .botonSubmit{
 	margin-top:15px;
 	background-color:#FF0000;

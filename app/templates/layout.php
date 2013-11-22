@@ -30,11 +30,13 @@
 <body>
 <div id="global">
 	<div id="encabezado">
-    <div class="linkslinks"><?php echo $_SESSION['usuarioactual'] ?></div>
-    <div class="linkslinks"><a href="index.php?ctl=salir">SALIR</a></div>
-    <img src="img/logobuhardillaROJOPEQ.png"  style="float:left;"/>
+    <div class="linkslinks" style="width:20px;border:none;"><a href="index.php?ctl=salir"><img src="img/turnright32p.png"/></a></div>
+    <div class="linkslinks" style="width:20px; border:none;"><a><img src="img/gear32p.png"/></a></div>
+    <div class="linkslinks" style="width:20px; border:none;"><a href="index.php?ctl=verCarrito"><img src="img/shoppingcart32p.png"/></a></div>
+    <div class="linkslinks" style="border:none;"><a href="index.php?ctl=inicio"><?php echo $_SESSION['usuarioactual'] ?></a></div>
+    <a href="index.php?ctl=inicio"><img src="img/logobuhardillaROJOPEQ.png"  style="float:left;"/></a>
      <form name="formBusqueda" action="index.php?ctl=buscar" method="POST">
-     <input type="text" class="textoBusqueda" name="titulo" value="">
+     <input type="text" class="textoBusqueda" name="titulo" value="" placeholder="BUSCAR POR TITULO">
     <input type="submit" name="buscar" class="botonBuscar" value="" onClick=" window.location.href='index.php?ctl=buscar' " />
      </form>
     </div>
@@ -42,19 +44,19 @@
         <div id="barra">
         	<ul> 
             <p>CATEGORÍAS</p>
-            <li> <a href="index.php?ctl=listar&id=1">Novela</a> </li>
-            <li> <a href="index.php?ctl=listar&id=2">Infantil</a> </li>
-            <li> <a href="index.php?ctl=listar&id=3">Técnico</a> </li>
-            <li> <a href="index.php?ctl=listar&id=4">Histórico</a> </li>
-            <li> <a href="index.php?ctl=listar&id=5">Juvenil</a> </li>
-            <li> <a href="index.php?ctl=listar&id=0">Todos</a> </li>
+            <li style="text-align:center;"> <a href="index.php?ctl=listar&id=1">Novela</a> </li>
+            <li style="text-align:center;"> <a href="index.php?ctl=listar&id=2">Infantil</a> </li>
+            <li style="text-align:center;"> <a href="index.php?ctl=listar&id=3">Técnico</a> </li>
+            <li style="text-align:center;"> <a href="index.php?ctl=listar&id=4">Histórico</a> </li>
+            <li style="text-align:center;"> <a href="index.php?ctl=listar&id=5">Juvenil</a> </li>
+            <li style="text-align:center;"> <a href="index.php?ctl=listar&id=0">Todos</a> </li>
             </ul>
             
             <ul>
             <p>PERFIL</p>
-            <li> <a>Configuración</a> </li>
-            <li> <a>Historial de Compras</a> </li>
-            <li> <a href="index.php?ctl=verCarrito">Carrito Actual</a> </li>
+            <li> <a><img src="img/gear32pp.png"/> Configuración</a> </li>
+            <li> <a href="index.php?ctl=verHistorial"><img src="img/moneyreceipt32pp.png"/> Historial</a> </li>
+            <li> <a href="index.php?ctl=verCarrito"> <img src="img/shoppingcart32pp.png"/> Carrito Actual</a> </li>
             </ul>
             
       

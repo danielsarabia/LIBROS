@@ -232,5 +232,24 @@
 		$result = $m->dameCarrito($usuario);
 		require __DIR__ . '/templates/verCarrito.php';
 	 }
+	 
+	 public function verHistorial(){
+		 @session_start();
+		 $usuario = $_SESSION['usuarioactual'];
+		 $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+		 $result = $m->dameNotas($usuario);
+		 require __DIR__ . '/templates/verHistorial.php';
+	 }
+	 
+	 public function verNota(){
+		 if (!isset($_POST['id_carrito'])) {
+             throw new Exception('Página no encontrada');
+         }
+		 $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+		 $result = $m->dameCarrito2($_POST['id_carrito']);
+		 require __DIR__ . '/templates/verNota.php';
+	 }
 
  }

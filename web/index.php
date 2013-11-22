@@ -20,7 +20,9 @@
 	 'anadir' => array('controller' =>'Controller', 'action' =>'anadir'),
 	 'verCarrito' => array('controller' =>'Controller', 'action' =>'verCarrito'),
 	 'eliminar' => array('controller' =>'Controller', 'action' =>'eliminar'),
-	 'comprar' => array('controller' =>'Controller', 'action' =>'comprar')
+	 'comprar' => array('controller' =>'Controller', 'action' =>'comprar'),
+	 'verHistorial' => array('controller' =>'Controller', 'action' =>'verHistorial'),
+	 'verNota' => array('controller' =>'Controller', 'action' =>'verNota')
  );
 
  // Parseo de la ruta

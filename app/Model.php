@@ -312,6 +312,53 @@
 		  $sql="update carrito set estado ='0' where id = '$id_carrito'";
 		  $result = mysql_query($sql, $this->conexion) or die(mysql_error());
 		}
+		
+		public function dameNotas($usuario){
+		  $sql = "select * from nota where id_carrito in (select id from carrito where id_cliente='$usuario')";
+		  $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+		  $datos = array();
+		 while ($row = mysql_fetch_assoc($result))
+		 {
+			$datos[] = $row;
+		 }
+		 return $datos;
+		  
+		}
+		
+		public function dameCarrito2($id){
+		  
+			  		
+					 $sql = "select * from carrito_libro where id_carrito='".$id."'";
+					 $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+					 $existe = mysql_num_rows($result);
+					 if($existe == 0){
+						 return 0;
+					 }
+					 $datos = array();
+					 while ($row = mysql_fetch_assoc($result))
+					 {
+						 $datos[] = $row;
+					 }
+			  		 foreach($datos as $dato){
+				  	 $result = mysql_query("select * from libro where id='".$dato['id_libro']."'", $this->conexion) or die(mysql_error());
+						  while ($row = mysql_fetch_assoc($result))
+						  {
+						   $datosss[] = $row;
+						   $datos2[] = array(
+						  'id_carrito'=> $id,
+						  'id_libro'=> $row['id'],
+						  'titulo' => $row['titulo'],
+						  'cantidad'=> $dato['cantidad'],
+						  'precio'=> $row['precio'],
+						  'total'=> $dato['cantidad'] * $row['precio'],
+						  );
+						  }
+				      }
+			   		 return $datos2;
+			  
+		  
+		
+	 }
 
 
  }
