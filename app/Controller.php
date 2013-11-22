@@ -170,7 +170,11 @@
                      Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
 					 
 		$resultado = $m->anadirAlCarrito($usuario, $id, $cantidad);
+		if($resultado == 0)
+		echo "<script>alert('NO HAY SUFICIENTES EJEMPLARES');</script>";
+		else
 		echo "<script>alert('ANADIDO AL CARRITO');</script>";
+		
 		/////////////////////////////////////////////////////////// VOLVER A CARGAR LA PAGINA
 		$params2 = array(
              'autor' => $m->dameAutor($id),
@@ -200,6 +204,23 @@
          }
 		$result = $m->eliminarDelCarrito($_POST['id_carrito'], $_POST['id_libro']);
 		echo "<script>alert('ELIMINADO');</script>";
+		///////////////////////// VER CARRITO
+		@session_start();
+		 $usuario = $_SESSION['usuarioactual'];
+		 $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+		$result = $m->dameCarrito($usuario);
+		require __DIR__ . '/templates/verCarrito.php';
+	 }
+	 
+	 public function comprar(){
+		 $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+		 if (!isset($_POST['id_carrito'])) {
+             throw new Exception('Página no encontrada');
+         }
+		 $result = $m->insertarNota($_POST['id_carrito'], $_POST['total']);
+		 echo "<script>alert('COMPRA EXITOSA');</script>";
 		///////////////////////// VER CARRITO
 		@session_start();
 		 $usuario = $_SESSION['usuarioactual'];

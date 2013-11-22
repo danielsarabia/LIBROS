@@ -24,7 +24,9 @@
 </tr>
 
 <tr> <td class="nada"></td><td class="nada"></td><td class="nada"></td>
-<td class="nada"><form method="post">
+<td class="nada"><form method="post" action="index.php?ctl=comprar">
+<input type="hidden" name="id_carrito" value="<?php echo $dato['id_carrito']?>">
+<input type="hidden" name="total" value="<?php echo $total?>">
 <input type="submit" value="Comprar" class="botonSubmit">
 </form></td>
 </tr>

@@ -180,6 +180,15 @@
 	 }
 	 
 	 public function anadirAlCarrito($usuario, $id, $cantidad){
+		 $resultVALIDACION = mysql_query("select cantidad from libro where id='$id'", $this->conexion) or die(mysql_error());
+				 while ($row = mysql_fetch_assoc($resultVALIDACION))
+				 {
+					 $cantidad_total = $row['cantidad'];
+					 if($row['cantidad']<$cantidad){
+						 return 0;
+					 }
+				 }
+		 
 		 $sql = "select id from carrito where id_cliente = '" . $usuario . "' and estado = 1";
 		 $result = mysql_query($sql, $this->conexion) or die(mysql_error());
 		 $existe = mysql_num_rows($result);
@@ -197,6 +206,9 @@
 				 {
 					 $datos2[] = $row;
 				 }
+				 if($cantidad_total<($datos2[0]['cantidad']+$cantidad)){
+					 return 0;
+				 }
 				 $result3 = mysql_query("update carrito_libro set cantidad ='".($datos2[0]['cantidad']+$cantidad)."' where id_carrito = '".$datos[0]['id']."' and id_libro='$id'", $this->conexion) or die(mysql_error());
 			 }else{ ///////// SI AUN NO SE HA AGREGADO ESE LIBRO SE AGREGA
 			  $sql = "insert into carrito_libro (id_carrito, id_libro, cantidad) values('".$datos[0]['id']."', '$id', $cantidad)";
@@ -207,13 +219,16 @@
 		  }else{ ///////// SI NO EXISTE UN CARRITO ASOCIADO AL CLIENTE SE AGREGA
 			   $sql = "insert into carrito (id_cliente, fecha, estado) values('$usuario', NOW(), 1)";
 			   $result = mysql_query($sql, $this->conexion) or die(mysql_error());
-			   echo $result;
+			   ///
+			   //echo $result;
+			   $sql = "select id from carrito where id_cliente = '" . $usuario . "' and estado = 1";
+		       $result = mysql_query($sql, $this->conexion) or die(mysql_error());
 			   $datos = array();
 				 while ($row = mysql_fetch_assoc($result))
 				 {
 					 $datos[] = $row;
 				 } ///////// SE AGREGA AL CARRITO EL LIBRO
-			   $sql = "insert into carrito_libro (id_carrito, id_libro, cantidad) values('".$datos[0]['id']."', '$id', $cantidad)";
+			   $sql = "insert into carrito_libro (id_carrito, id_libro, cantidad) values('".$datos[0]['id']."', '$id', '$cantidad')";
 			   $result = mysql_query($sql, $this->conexion) or die(mysql_error());
 			  
 		  }
@@ -267,6 +282,25 @@
 		  $result = mysql_query($sql, $this->conexion) or die(mysql_error());
 		 
 	 }
+	 
+	 public function insertarNota($id_carrito, $total){
+		  ////////// DISMINUIR STOCK DE PRODUCTOS
+		  $sql = "select * from carrito_libro where id_carrito='$id_carrito'";
+		  $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+		  //$datos = array();
+		 while ($row = mysql_fetch_assoc($result))
+		 {
+			$sql = "update libro set cantidad=cantidad - '".$row['cantidad']."' where id='".$row['id_libro']."'";
+			$result2 = mysql_query($sql, $this->conexion) or die(mysql_error());
+			//$datos[] = $row;
+		 }
+		  
+		  //////////////////////////////////////////////
+		  $sql = "insert into nota (id_carrito, fecha, total) values('$id_carrito', NOW(), '$total')";
+	      $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+		  $sql="update carrito set estado ='0' where id = '$id_carrito'";
+		  $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+		}
 
 
  }
