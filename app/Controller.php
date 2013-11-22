@@ -170,7 +170,7 @@
                      Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
 					 
 		$resultado = $m->anadirAlCarrito($usuario, $id, $cantidad);
-		if($resultado == 0)
+		if($resultado == -1)
 		echo "<script>alert('NO HAY SUFICIENTES EJEMPLARES');</script>";
 		else
 		echo "<script>alert('ANADIDO AL CARRITO');</script>";
@@ -220,6 +220,9 @@
              throw new Exception('Página no encontrada');
          }
 		 $result = $m->insertarNota($_POST['id_carrito'], $_POST['total']);
+		 if($result==-1)
+		 echo "<script>alert('NO HAY SUFICIENTES EJEMPLARES');</script>";
+		 else
 		 echo "<script>alert('COMPRA EXITOSA');</script>";
 		///////////////////////// VER CARRITO
 		@session_start();

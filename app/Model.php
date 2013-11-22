@@ -185,7 +185,7 @@
 				 {
 					 $cantidad_total = $row['cantidad'];
 					 if($row['cantidad']<$cantidad){
-						 return 0;
+						 return -1;
 					 }
 				 }
 		 
@@ -207,7 +207,7 @@
 					 $datos2[] = $row;
 				 }
 				 if($cantidad_total<($datos2[0]['cantidad']+$cantidad)){
-					 return 0;
+					 return -1;
 				 }
 				 $result3 = mysql_query("update carrito_libro set cantidad ='".($datos2[0]['cantidad']+$cantidad)."' where id_carrito = '".$datos[0]['id']."' and id_libro='$id'", $this->conexion) or die(mysql_error());
 			 }else{ ///////// SI AUN NO SE HA AGREGADO ESE LIBRO SE AGREGA
@@ -284,6 +284,17 @@
 	 }
 	 
 	 public function insertarNota($id_carrito, $total){
+		  ////////// VALIDAR STOCK
+		  $result2 = mysql_query("select * from carrito_libro where id_carrito = '$id_carrito'") or die(mysql_error());
+		  while ($row2 = mysql_fetch_assoc($result2)){
+		  $resultVALIDACION = mysql_query("select cantidad from libro where id='".$row2['id_libro']."'", $this->conexion) or die(mysql_error());
+				 while ($row = mysql_fetch_assoc($resultVALIDACION))
+				 {
+					 if($row['cantidad']<$row2['cantidad']){
+						 return -1;
+					 }
+				 }
+		  }
 		  ////////// DISMINUIR STOCK DE PRODUCTOS
 		  $sql = "select * from carrito_libro where id_carrito='$id_carrito'";
 		  $result = mysql_query($sql, $this->conexion) or die(mysql_error());
