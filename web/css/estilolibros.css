@@ -30,7 +30,7 @@ src: url(../fonts/OpenSans-Bold.ttf) format("truetype"), url(../fonts/OpenSans-B
 
 * {margin:0; padding: 0;}
 
-a{text-decoration:none; color:#FF0000;}
+a{text-decoration:none; color:#FF0000; background-color:transparent;}
 a:hover{
 background-image:url(../img/fondorayas2.png);
 	background-repeat:repeat;
@@ -375,21 +375,6 @@ select{
 
 
 
-/*.textoLogin{
-	
-	font-family:"OpenSans-Light", sans-serif;
-	font-size:18px;
-	padding-left:10px;
-	margin-bottom:15px;
-	background-image:url(../img/fondotexto.png);
-	border: 1px solid #999999;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	width:180px;
-	height:25px;
-}*/
-
 #botonLogin{
 	width:141px;
 	height:51px;
@@ -481,4 +466,12 @@ font-family:"OpenSans-Light", sans-serif;
 	vertical-align:central;
 	text-align:center;
 	min-width:100px;
+}
+
+.linkspie{
+	width:inherit;
+	font-family:"OpenSans-SemiBold", sans-serif;
+	color:#FFFFFF;
+	font-size:20px;
+	margin-top:15px;
 }

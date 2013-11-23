@@ -251,5 +251,32 @@
 		 $result = $m->dameCarrito2($_POST['id_carrito']);
 		 require __DIR__ . '/templates/verNota.php';
 	 }
+	 
+	 public function verConfiguracion(){
+		 @session_start();
+		 $usuario = $_SESSION['usuarioactual'];
+		 $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+		 $result = $m->dameUsuario($usuario);
+		 require __DIR__ . '/templates/verConfiguracion.php';
+	 }
+	 
+	 public function configurar(){
+		 @session_start();
+		 $usuario = $_SESSION['usuarioactual'];
+		 $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+					 if (!isset($_POST['nombre'])) {
+             throw new Exception('Página no encontrada');
+         }
+		 $result = $m->configurar($usuario, $_POST['nombre'], $_POST['apellido1'], $_POST['apellido2'], $_POST['edad'], $_POST['email'], $_POST['telefono'], $_POST['calle'], $_POST['numero'], $_POST['ciudad']);
+		 ///////////////////////
+		  @session_start();
+		 $usuario = $_SESSION['usuarioactual'];
+		 $m = new Model(Config::$mvc_bd_nombre, Config::$mvc_bd_usuario,
+                     Config::$mvc_bd_clave, Config::$mvc_bd_hostname);
+		 $result = $m->dameUsuario($usuario);
+		 require __DIR__ . '/templates/verConfiguracion.php';
+	 }
 
  }

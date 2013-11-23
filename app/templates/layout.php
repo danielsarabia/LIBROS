@@ -25,19 +25,61 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery.ketchup.all.min.js"></script>
 <script src="funcion.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+					
+					
+				$.ketchup.message('required', 'Este es un campo obligatorio.');
+				$.ketchup.validation('validartel', 'Introduzca un número de 10 dígitos sin espacios.', function(form, el, value) {
+					  if(value.match(/^\d{10}$/)) {
+						return true;
+					  } else {
+						return false;
+					  }
+					});
+				
+				$.ketchup.validation('validarnom', 'Introduzca nombre y apellido', function(form, el, value) {
+					aux = [];
+					var aux = value.split(' ');
+					//alert(aux.length);
+					  if(value.match(/[a-z]/)&& aux.length>=2 && aux[1]!=null && aux[1]!='' && aux[1]!=' ') {
+						return true;
+					  } else {
+						return false;
+					  }
+					});
+					$.ketchup.validation('validarcant', 'Introdujo un valor incorrecto.', function(form, el, value) {
+					aux = [];
+					var aux = value.split(' ');
+					  if(value.match(/[a-zA-Z0-9]/) && aux[0].match(/[0123456789]/) && aux.length>=1 ) {
+						return true;
+					  } else if(aux.length>=2 && aux[0].match(/[0123456789]/) && aux[1]!=null && aux[1]!='' && aux[1]!=' '){
+						  return true;
+					  }
+					  else {
+						return false;
+					  }
+					});
+				
+				  $('#formBusqueda').ketchup();
+				
+				 $('#registro').ketchup();
+				});
+
+</script>
 </head>
 
 <body>
 <div id="global">
 	<div id="encabezado">
     <div class="linkslinks" style="width:20px;border:none;"><a href="index.php?ctl=salir"><img src="img/turnright32p.png"/></a></div>
-    <div class="linkslinks" style="width:20px; border:none;"><a><img src="img/gear32p.png"/></a></div>
+    <div class="linkslinks" style="width:20px; border:none;"><a href="index.php?ctl=verConfiguracion"><img src="img/gear32p.png"/></a></div>
     <div class="linkslinks" style="width:20px; border:none;"><a href="index.php?ctl=verCarrito"><img src="img/shoppingcart32p.png"/></a></div>
     <div class="linkslinks" style="border:none;"><a href="index.php?ctl=inicio"><?php echo $_SESSION['usuarioactual'] ?></a></div>
     <a href="index.php?ctl=inicio"><img src="img/logobuhardillaROJOPEQ.png"  style="float:left;"/></a>
-     <form name="formBusqueda" action="index.php?ctl=buscar" method="POST">
-     <input type="text" class="textoBusqueda" name="titulo" value="" placeholder="BUSCAR POR TITULO">
-    <input type="submit" name="buscar" class="botonBuscar" value="" onClick=" window.location.href='index.php?ctl=buscar' " />
+     <form name="formBusqueda" id="formBusqueda" action="index.php?ctl=buscar" method="POST">
+     <input type="text" class="textoBusqueda" name="titulo" value="" placeholder="BUSCAR POR TITULO" data-validate="validate(required)">
+    <input type="submit" name="buscar" class="botonBuscar" value=""/>
      </form>
     </div>
     <div id="area">
@@ -54,7 +96,7 @@
             
             <ul>
             <p>PERFIL</p>
-            <li> <a><img src="img/gear32pp.png"/> Configuración</a> </li>
+            <li> <a href="index.php?ctl=verConfiguracion"><img src="img/gear32pp.png"/> Configuración</a> </li>
             <li> <a href="index.php?ctl=verHistorial"><img src="img/moneyreceipt32pp.png"/> Historial</a> </li>
             <li> <a href="index.php?ctl=verCarrito"> <img src="img/shoppingcart32pp.png"/> Carrito Actual</a> </li>
             </ul>
@@ -66,6 +108,9 @@
         </div>
     </div>
     <div id="pie">
+    <div class="linkspie"><a>Novela |</a> <a>Infantil |</a> <a>Técnico |</a> <a>Histórico |</a> <a>Juvenil |</a> <a>Todos</a></div>
+    <div class="linkspie"><a>Configuracón ---</a> <a>Historial ---</a> <a>Carrito Actual</a></div>
+    <div class="linkspie"><a style="font-family:'OpenSans-ExtraBold'">~ C O N T A C T O ~</a></div>
     </div>
 </div>
 </body>

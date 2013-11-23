@@ -36,6 +36,18 @@
          return $datos;
 	 }
 	 
+	 public function dameUsuario($usuario){
+		 $sql = "select * from cliente where usuario='$usuario'";
+		 $result = mysql_query($sql, $this->conexion) or die(mysql_error());
+		 $datos = array();
+         while ($row = mysql_fetch_assoc($result))
+         {
+             $datos[] = $row;
+         }
+
+         return $datos;
+	 }
+	 
 	 public function validarUsuario($nombre, $contrasena){
 		 $sql = "select usuario from cliente where usuario = '" . $nombre . "'";
 		 $result = mysql_query($sql, $this->conexion) or die(mysql_error());
@@ -358,6 +370,11 @@
 			  
 		  
 		
+	 }
+	 
+	 public function configurar($usuario, $nombre, $apellido_paterno, $apellido_materno, $edad, $email, $telefono, $calle, $numero, $ciudad){
+		 $sql = "update cliente set nombre='$nombre', apellido_paterno='$apellido_paterno', apellido_materno='$apellido_materno', calle='$calle', numero='$numero', ciudad='$ciudad', telefono='$telefono', edad='$edad', email='$email' where usuario='$usuario'";
+					 $result = mysql_query($sql, $this->conexion) or die(mysql_error());
 	 }
 
 

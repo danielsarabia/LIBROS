@@ -22,7 +22,9 @@
 	 'eliminar' => array('controller' =>'Controller', 'action' =>'eliminar'),
 	 'comprar' => array('controller' =>'Controller', 'action' =>'comprar'),
 	 'verHistorial' => array('controller' =>'Controller', 'action' =>'verHistorial'),
-	 'verNota' => array('controller' =>'Controller', 'action' =>'verNota')
+	 'verNota' => array('controller' =>'Controller', 'action' =>'verNota'),
+	 'verConfiguracion' => array('controller' =>'Controller', 'action' =>'verConfiguracion'),
+	 'configurar' => array('controller' =>'Controller', 'action' =>'configurar')
  );
 
  // Parseo de la ruta

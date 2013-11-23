@@ -11,7 +11,7 @@
   text-align: left;
   color: #111;
   /*background: red;*/
-  background: rgba(0, 145, 160, 0.8);
+  background: rgba(255, 0, 0, 0.8);
   padding: 10px;
   -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;
   list-style: none;
@@ -25,7 +25,7 @@
   border-left: 0 solid transparent; 
   border-right: 15px solid transparent;
  /* border-top: 10px solid red;*/
-  border-top: 10px solid rgba(0, 145, 160, 0.8);
+  border-top: 10px solid rgba(255, 0, 0, 0.8);
   border-bottom: 0;
   margin-left: 10px;
 }
