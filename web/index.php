@@ -24,6 +24,7 @@
 	 'verHistorial' => array('controller' =>'Controller', 'action' =>'verHistorial'),
 	 'verNota' => array('controller' =>'Controller', 'action' =>'verNota'),
 	 'verConfiguracion' => array('controller' =>'Controller', 'action' =>'verConfiguracion'),
+	 'Correo' => array('controller' =>'Controller', 'action' =>'Correo'),
 	 'configurar' => array('controller' =>'Controller', 'action' =>'configurar')
  );
 

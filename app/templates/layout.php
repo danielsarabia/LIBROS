@@ -109,7 +109,7 @@ $(document).ready(function(){
     </div>
     <div id="pie">
     <div class="linkspie"><a>Novela |</a> <a>Infantil |</a> <a>Técnico |</a> <a>Histórico |</a> <a>Juvenil |</a> <a>Todos</a></div>
-    <div class="linkspie"><a>Configuracón ---</a> <a>Historial ---</a> <a>Carrito Actual</a></div>
+    <div class="linkspie"><a>Configuracón ---</a> <a>Historial ---</a> <a>Carrito Actual ---</a><a href="index.php?ctl=Correo">Contacto</a></div>
     <div class="linkspie"><a style="font-family:'OpenSans-ExtraBold'">~ C O N T A C T O ~</a></div>
     </div>
 </div>

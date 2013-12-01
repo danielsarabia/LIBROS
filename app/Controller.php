@@ -135,6 +135,10 @@
 
          require __DIR__ . '/templates/buscarPorNombre.php';
      }
+	 public function Correo()
+     {
+     	require __DIR__ . '/templates/contactos.php';
+     }
 	 public function ver()
      {
          if (!isset($_GET['id'])) {
